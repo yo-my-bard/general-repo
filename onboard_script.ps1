@@ -4,11 +4,10 @@
 # in the folder is recommended to be added as a shortcut either on the desktop, the taskbar, or in the start menu for quick access.
 # Open up cmder, it will pause for a moment for an initial setup
 # Ctrl + T to open a new tab. A prompt pops up; in the bottom right, check off "Run as Administrator" and Start and Yes
-# type powershell and press Enter
-# The prompt should now say: Windows PowerShell ...
+# ----type powershell and press Enter The prompt should now say: Windows PowerShell ...--- #MIGHT DELETE THIS
 # On File Explorer, find the folder that has the onboarding script and the summit_requirements.txt file
 # type cd and then drag that folder to the cmder screen, press Enter
-# type .\onboard_script.ps1 and press Enter
+# type powershell .\onboard_script.ps1 and press Enter
 # This will take a while but you should see a "Writing web request..." textbox up top and text that says Downloading Anaconda
 # Hopefully the rest takes care of itself.
 
@@ -17,8 +16,8 @@ echo "Downloading Anaconda"
 curl -o conda5_2.exe https://repo.anaconda.com/archive/Anaconda3-5.2.0-Windows-x86_64.exe
 .\conda5_2.exe /AddToPath=1 /RegisterPython=1 /S /D=$ENV:UserProfile\Anaconda3 # Use /? to see more arguments/flags
 conda --version #Check that it works
-#conda update -n base -c defaults conda -y #Update conda
-#echo "Finished updating Conda"
+conda update -n base -c defaults conda -y #Update conda
+echo "Finished updating Conda"
 
 # Build Tools
 # --help to see more arguments/flags
@@ -31,8 +30,7 @@ echo "Finished installing Build Tools"
 # Create development environment and install packages using pip
 echo "Creating a Summit Environment"
 conda create --name summit python=3.6.* -y
-conda init powershell #This might cause trouble, didn't seem to take effect when I tried activating environment
-powershell #Maybe if start a new shell it'll catch on?
+conda init #This might cause trouble, didn't seem to take effect when I tried activating environment
 conda activate summit
 which python #Confirm Python path and version
 pip install -r summit_requirements.txt #This will take a while
